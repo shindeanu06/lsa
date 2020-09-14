@@ -1,0 +1,40 @@
+                                                                            prac 1 
+Theory of dhcp server:
+ 1)DHCP (Dynamic Host Configuration Protocol) is a network management protocol used to dynamically assign an Internet Protocol (IP) address to any device, or node, on a network so they can communicate using IP. 
+2) DHCP automates and centrally manages these configurations rather than requiring network administrators to manually assign IP addresses to all network devices. DHCP can be implemented on small local networks, as well as large enterprise networks.
+3)DHCP will assign new IP addresses in each location when devices are moved from place to place, which means network administrators do not have to manually configure each device with a valid IP address or reconfigure the device with a new IP address if it moves to a new location on the network. 
+4)Versions of DHCP are available for use in IP version 4 (IPv4) and IP version 6 (IPv6).
+5) IPv6 became an industry standard in 2017 -- nearly 20 years after its specifications were first published. While the adoption rate of IPv6 was slow, by July 2019, more than 29% of Google users were making inquiries using IPv6.
+6)DHCP runs at the application layer of the Transmission Control Protocol/IP (TCP/IP) stack to dynamically assign IP addresses to DHCP clients and to allocate TCP/IP configuration information to DHCP clients. 
+This includes subnet mask information, default gateway IP addresses and domain name system (DNS) addresses.
+7)DHCP is a client-server protocol in which servers manage a pool of unique IP addresses, as well as information about client configuration parameters, and assign addresses out of those address pools. 
+DHCP-enabled clients send a request to the DHCP server whenever they connect to a network.
+8)A DHCP server manages a record of all the IP addresses it allocates to network nodes. If a node is relocated in the network, the server identifies it using its Media Access Control (MAC) address, which prevents the accidental configuration of multiple devices with the same IP address. 
+Configuring a DHCP server also requires the creation of a configuration file, which stores network information for clients.
+9)DHCP lacks any built-in mechanism that would enable clients and servers to authenticate each other. 
+Both are vulnerable to deception -one computer pretending to be another - and to attack, where rogue clients can exhaust a DHCP server's IP address pool.
+10)The uses are:DHCP is used to distribute IP addresses within a network and to configure the proper subnet mask, default gateway and DNS server information on the device.
+11)DHCP servers have also been the subject of multiple memory corruption vulnerabilities. In these, attackers have targeted the Windows DHCP Server service. When successful, the attacks can lead to a full compromise of Microsoft Active Directory (AD). 
+One such vulnerability, patched by Microsoft, was the Common Vulnerabilities and Exposures (CVE)-2019-0725 Windows DHCP Server Remote Code Execution (RCE) Vulnerability.
+
+
+Step 1 :- Installing DHCP Server 
+Run the command below to install the DHCP server package
+Command  :- sudo apt-get -y install isc-dhcp-server
+Now edit the file /etc/default/isc-dhcp-server to define the interfaces DHCPD should use to serve DHCP requests, with the INTERFACES option
+Command :- Change Interface Option (INTERFACES="eth0")
+Step 2 :- Configure DHCP Server
+After This We Have To Configure DHCP Server
+DHCP configuration file is present at /etc/dhcp/dhcpd.conf
+Open And Modify DHCP File
+sudo vi /etc/dhcp/dhcpd.conf
+Configure your dhcpd.conf by directly editing through a path 
+Command :- $sudo nano /etc/dhcp/dhcpd.conf
+Replace Ip Address Of dhcpd.conf with your ip address.
+To Know Your Ip Address 
+Command :- ip addr OR ipconfig
+After Change Save And Exit
+Then to enable the services use the command
+Command :- $sudo systemctl enable isc-dhcp-server.service
+And Now Start The Service.
+Command :- $sudo systemctl start isc-dhcp-server.service
