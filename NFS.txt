@@ -1,0 +1,56 @@
+                                              NFS
+THEORY OF NFS
+NFS (Network File System) is basically developed for sharing of files and folders between Linux/Unix systems.
+It allows you to mount your local file systems over a network and remote hosts to interact with them as they are mounted locally on the same system. 
+With the help of NFS, we can set up file sharing between Unix to Linux system and Linux to Unix system.
+1)NFS is a network that was introduced by Sun Microsystems and is used by Unix or Linux based operating systems and stands for Network File System
+2)This is a network that is used for giving the remote access capabilities to the applications
+3) Remote access enables the user to edit or even take a closer look at his computer by using another computer.
+4) Old files can be repaired even when the user is at a distance from his computer. 
+5)This protocol gives devices the functionality to modify the data over a network.
+6)NFS does not provide sessions
+7)It uses 111 port for both TCP and UDP
+8)It is simple to implement and executing query is fast
+9)It is not reliable and there is no special security
+10)It is better than CIFS
+There are 4 versions of nfs - nfsv2, nfsv3, nfsv4
+NFSv2
+Request are host based and not user based
+TCP or UDP
+supports 2GB file size on clients
+NFSv3
+fixes bugs of v2
+TCP or UDP
+Request host based not user based
+support is based on server file limit
+NFSv4
+Stateful protocol TCP or SCTCP
+Security features, kerberos
+Client authentication per user basis
+RPC (Remote Procedural Call)
+Listens on port 2049
+
+Commands:-
+
+$sudo apt-get -y install nfs-kernel-server
+
+$sudo systemctl enable nfs-kernel-server
+
+[Create a directory to show the function of nfs i.e(mounting)]
+
+$mkdir demo_dir
+$touch a.txt
+
+$cat /etc/exports
+
+[configure your exports file by adding /directory_path/ ipaddr (permissions)]
+
+$sudo exportfs -ra
+
+$sudo apt-get -y install nfs-common
+
+$sudo mount -t nfs /directorytoexport client_ip_ntwrk (permissions) 
+
+[then check for your mounted file in the directory you made]
+
+
